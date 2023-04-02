@@ -1,0 +1,16 @@
+#include <Windows.h>
+#include <iostream>
+
+import launch_utils;
+
+int main()
+{
+    DWORD64 mitigation_flags = 
+        PROCESS_CREATION_MITIGATION_POLICY_FONT_DISABLE_MASK | 
+        PROCESS_CREATION_MITIGATION_POLICY_HIGH_ENTROPY_ASLR_ALWAYS_ON | 
+        PROCESS_CREATION_MITIGATION_POLICY2_MODULE_TAMPERING_PROTECTION_ALWAYS_ON | 
+        PROCESS_CREATION_MITIGATION_POLICY2_MODULE_TAMPERING_PROTECTION_DEFER;
+
+    auto flag = launch_notepad(mitigation_flags);
+
+}
