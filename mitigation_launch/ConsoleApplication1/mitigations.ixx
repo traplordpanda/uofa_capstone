@@ -1,10 +1,10 @@
-export module mitigations; 
+export module mitigations;
 
 #include <string_view>
 #include <map>
 #include <Windows.h>
 
-std::map<std::string_view, DWORD64> mitigation_map = 
+export std::map<std::string_view, DWORD64> mitigation_map =
 {
 {"PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE" , PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE},
 {"PROCESS_CREATION_MITIGATION_POLICY_DEP_ATL_THUNK_ENABLE" , PROCESS_CREATION_MITIGATION_POLICY_DEP_ATL_THUNK_ENABLE},

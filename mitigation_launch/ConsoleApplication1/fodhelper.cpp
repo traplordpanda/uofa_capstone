@@ -1,7 +1,6 @@
-#include <Windows.h>
-#include <iostream>
+import launch_utils; 
 
-import launch_utils;
+#include <Windows.h>
 
 int main()
 {
@@ -11,6 +10,6 @@ int main()
         PROCESS_CREATION_MITIGATION_POLICY2_MODULE_TAMPERING_PROTECTION_ALWAYS_ON | 
         PROCESS_CREATION_MITIGATION_POLICY2_MODULE_TAMPERING_PROTECTION_DEFER;
 
-    auto flag = launch_notepad(mitigation_flags);
+    auto pl = launch_notepad(mitigation_flags);
 
 }

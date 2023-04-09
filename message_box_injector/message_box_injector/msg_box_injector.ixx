@@ -1,6 +1,9 @@
+module;
+
 #include <Windows.h>
 #include <iostream>
 export module dll_injector;
+
 
 export bool inject_dll(DWORD processID, const wchar_t* dllPath) {
     HANDLE hProcess = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_QUERY_INFORMATION | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ, FALSE, processID);

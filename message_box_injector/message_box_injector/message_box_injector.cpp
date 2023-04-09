@@ -1,22 +1,24 @@
 // message_box_injector.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-#include <Windows.h>
+
+#include <windows.h>
+#include <string>
 #include <iostream>
+#include <string_view>
 
-import msg_box_loader;
-import dll_injector;
+import detours_inject;
 
-int main()
+int main(int argc, char* argv[])
 {
-	DWORD pid{ 0 };
-	auto dllpath = L"C:\\Users\\User\\source\\repos\\message_box_injection\\x64\\Debug\\message_box_injection.dll";
-	std::cout << "Enter the target process ID: ";
-	std::cin >> pid;
-	auto result = inject_dll(pid, dllpath);
-	if (result) {
-		std::cout << "\nDLL inject success";
-		return 0;
+	if (argc < 2)
+	{
+		std::cerr << "Usage: " << argv[0] << " <target_executable_path>" << std::endl;
+		return 1;
 	}
-	std::cout << "\nDLL inject failed";
-	return 1;
+	std::string_view exe_path { argv[1] };
+	std::wstring wexe_path { exe_path.begin(), exe_path.end() };
+	auto dllpath = "message_box_injection.dll";
+
+	launch_proc_with_dll(wexe_path, dllpath);
+	return 0;
+
 }
